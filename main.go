@@ -10,6 +10,7 @@ import (
 
 	"github.com/hajimehoshi/ebiten/examples/resources/fonts"
 	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/inpututil"
 	"github.com/hajimehoshi/ebiten/v2/text"
 )
 
@@ -29,6 +30,7 @@ type Game struct {
 	runes           []rune
 	text            string
 	playerInputText string
+	ps1             string
 	counter         int
 }
 
@@ -48,6 +50,8 @@ func init() {
 	})
 }
 
+/////
+
 func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
 	return screenWidth, screenHeight
 }
@@ -55,8 +59,12 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
 func (g *Game) Update() error {
 
 	g.runes = ebiten.AppendInputChars(g.runes[:0])
-	g.text += string(g.runes)
+	g.playerInputText += string(g.runes)
 	g.counter++
+
+	if inpututil.IsKeyJustPressed(ebiten.KeyEnter) {
+		MoveInputToTerminal(g)
+	}
 
 	return nil
 }
@@ -69,16 +77,19 @@ func (g *Game) Draw(screen *ebiten.Image) {
 		t += "-"
 	}
 
+	text.Draw(screen, g.playerInputText, mplusNormalFont, 40, 440, color.White)
 	text.Draw(screen, g.text, mplusNormalFont, 40, 40, color.White)
 }
 
 func main() {
 	g := &Game{}
-
+	g.ps1 = "> "
+	MoveInputToTerminal(g)
 	ebiten.SetWindowSize(screenWidth, screenHeight)
 	ebiten.SetWindowTitle("Test!")
 
 	if err := ebiten.RunGame(g); err != nil {
 		log.Fatal(err)
 	}
+
 }
