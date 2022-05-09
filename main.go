@@ -2,10 +2,15 @@ package main
 
 // Imports
 import (
+	"image/color"
 	"log"
 
+	"golang.org/x/image/font"
+	"golang.org/x/image/font/opentype"
+
+	"github.com/hajimehoshi/ebiten/examples/resources/fonts"
 	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
+	"github.com/hajimehoshi/ebiten/v2/text"
 )
 
 // Global constants
@@ -14,11 +19,33 @@ const (
 	screenHeight = 480
 )
 
+// Global Vars
+var (
+	mplusNormalFont font.Face
+)
+
 // Game Struct type
 type Game struct {
-	runes   []rune
-	text    string
-	counter int
+	runes           []rune
+	text            string
+	playerInputText string
+	counter         int
+}
+
+// Initialize some things
+
+func init() {
+	tt, err := opentype.Parse(fonts.MPlus1pRegular_ttf)
+
+	if err != nil {
+		log.Fatal("Font is broke")
+	}
+
+	mplusNormalFont, err = opentype.NewFace(tt, &opentype.FaceOptions{
+		Size:    16,
+		DPI:     72,
+		Hinting: font.HintingFull,
+	})
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
@@ -42,7 +69,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 		t += "-"
 	}
 
-	ebitenutil.DebugPrint(screen, t)
+	text.Draw(screen, g.text, mplusNormalFont, 40, 40, color.White)
 }
 
 func main() {
