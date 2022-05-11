@@ -10,6 +10,7 @@ import (
 
 	"github.com/hajimehoshi/ebiten/examples/resources/fonts"
 	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
 	"github.com/hajimehoshi/ebiten/v2/text"
 )
@@ -63,7 +64,10 @@ func (g *Game) Update() error {
 	g.counter++
 
 	if inpututil.IsKeyJustPressed(ebiten.KeyEnter) {
+		command := ParseUserCommand(g.playerInputText)
 		MoveInputToTerminal(g)
+		HandleCommand(g, command)
+
 	}
 
 	if inpututil.IsKeyJustPressed(ebiten.KeyBackspace) {
@@ -83,16 +87,22 @@ func (g *Game) Draw(screen *ebiten.Image) {
 		t += "-"
 	}
 
+	// Player input area
+	ebitenutil.DrawLine(screen, 0, 420, screenWidth, 420, color.White)
 	text.Draw(screen, g.playerInputText, mplusNormalFont, 40, 440, color.White)
+
+	// Text Display
 	text.Draw(screen, g.text, mplusNormalFont, 40, 40, color.White)
 }
 
 func main() {
 	g := &Game{}
+
+	// Set up text area
 	g.ps1 = "> "
-	MoveInputToTerminal(g)
+	g.playerInputText = g.ps1
 	ebiten.SetWindowSize(screenWidth, screenHeight)
-	ebiten.SetWindowTitle("Test!")
+	ebiten.SetWindowTitle("Dark Cave")
 
 	if err := ebiten.RunGame(g); err != nil {
 		log.Fatal(err)
