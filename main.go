@@ -66,6 +66,12 @@ func (g *Game) Update() error {
 		MoveInputToTerminal(g)
 	}
 
+	if inpututil.IsKeyJustPressed(ebiten.KeyBackspace) {
+		if len(g.playerInputText) > 2 {
+			g.playerInputText = g.playerInputText[:len(g.playerInputText)-1]
+		}
+	}
+
 	return nil
 }
 
