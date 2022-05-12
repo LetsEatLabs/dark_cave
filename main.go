@@ -33,6 +33,7 @@ type Game struct {
 	playerInputText string
 	ps1             string
 	counter         int
+	locations       Locations
 }
 
 // Initialize some things
@@ -103,6 +104,9 @@ func main() {
 	g.playerInputText = g.ps1
 	ebiten.SetWindowSize(screenWidth, screenHeight)
 	ebiten.SetWindowTitle("Dark Cave")
+
+	// Load the narrative
+	loadGameLocations(g)
 
 	if err := ebiten.RunGame(g); err != nil {
 		log.Fatal(err)
