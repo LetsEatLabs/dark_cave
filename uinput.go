@@ -22,9 +22,12 @@ func MoveInputToTerminal(g *Game) {
 	g.playerInputText = g.ps1
 }
 
-// Writes the string exactly as passed to the terminal
+// Writes a string exactly as passed to the terminal, accounting for column width
 func WriteOutputToTerminal(g *Game, str string) {
 	g.text += fmt.Sprintf("%s\n", str)
+
+	a := 0
+
 }
 
 // Splits the command on space, and makes all lower case
