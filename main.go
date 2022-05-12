@@ -33,7 +33,8 @@ type Game struct {
 	playerInputText string
 	ps1             string
 	counter         int
-	locations       Locations
+	locations       []Location
+	currentLocation string
 }
 
 // Initialize some things
@@ -50,6 +51,10 @@ func init() {
 		DPI:     72,
 		Hinting: font.HintingFull,
 	})
+
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 /////
@@ -107,6 +112,7 @@ func main() {
 
 	// Load the narrative
 	loadGameLocations(g)
+	g.currentLocation = "dark_cave_entrance"
 
 	if err := ebiten.RunGame(g); err != nil {
 		log.Fatal(err)

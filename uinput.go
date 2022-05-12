@@ -12,14 +12,17 @@ import (
 
 var knownCommands = []string{
 	"help",
+	"look",
 	"exit",
 }
 
+// Writes the user input to the terminal and then clears the user input field
 func MoveInputToTerminal(g *Game) {
 	g.text += fmt.Sprintf("You: %s\n", strings.Replace(g.playerInputText, "> ", "", 1))
 	g.playerInputText = g.ps1
 }
 
+// Writes the string exactly as passed to the terminal
 func WriteOutputToTerminal(g *Game, str string) {
 	g.text += fmt.Sprintf("%s\n", str)
 }
@@ -70,6 +73,11 @@ func HandleCommand(g *Game, command []string) {
 	// Are we quitting?
 	if command[0] == "exit" {
 		os.Exit(0)
+	}
+
+	// If we look, read the current description of the Location we are in
+	if command[0] == "look" {
+		readLocationDesc(g.currentLocation, g)
 	}
 }
 
