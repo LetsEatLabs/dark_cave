@@ -18,15 +18,32 @@ var knownCommands = []string{
 
 // Writes the user input to the terminal and then clears the user input field
 func MoveInputToTerminal(g *Game) {
+	// First clear the screen so it is fresh every time the player hits enter
+	g.text = ""
+
 	g.text += fmt.Sprintf("You: %s\n", strings.Replace(g.playerInputText, "> ", "", 1))
 	g.playerInputText = g.ps1
 }
 
 // Writes a string exactly as passed to the terminal, accounting for column width
 func WriteOutputToTerminal(g *Game, str string) {
-	g.text += fmt.Sprintf("%s\n", str)
 
-	a := 0
+	newText := ""
+
+	for i := range str {
+		a := i
+		letter := string(str[i])
+		newText += letter
+
+		// Restart our column counter if we have a new line, because duh
+
+		if a%textWidth == 0 {
+			newText += "\n"
+			a = 0
+		}
+	}
+
+	g.text += fmt.Sprintf("%s", newText)
 
 }
 

@@ -19,7 +19,7 @@ import (
 const (
 	screenWidth  = 640
 	screenHeight = 480
-	textWidth    = 80 // Columns
+	textWidth    = 70 // Columns
 )
 
 // Global Vars
