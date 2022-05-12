@@ -113,7 +113,7 @@ func main() {
 
 	// Load the narrative
 	loadGameLocations(g)
-	g.currentLocation = "dark_cave_entrance"
+	g.currentLocation = "testing_void"
 
 	if err := ebiten.RunGame(g); err != nil {
 		log.Fatal(err)

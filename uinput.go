@@ -16,6 +16,13 @@ var knownCommands = []string{
 	"exit",
 }
 
+var commandUsage = map[string]string {
+	"help": "Displays this information",
+	"look": "You look around your current surroundings",
+	"exit": "You go home",
+}
+
+
 // Writes the user input to the terminal and then clears the user input field
 func MoveInputToTerminal(g *Game) {
 	// First clear the screen so it is fresh every time the player hits enter
@@ -33,10 +40,11 @@ func WriteOutputToTerminal(g *Game, str string) {
 	a := 0
 	for i := range str {
 
-		// Restart our column counter if we have a new line
+		
 		letter := string(str[i])
 		newText += letter
 
+		// Restart our column counter if we have a new line
 		if letter == "\n" {
 			a = 0
 		}
@@ -100,6 +108,17 @@ func HandleCommand(g *Game, command []string) {
 	// Are we quitting?
 	if command[0] == "exit" {
 		os.Exit(0)
+	}
+
+	// Do you need help?
+	if command[0] == "help" {
+		writeStr := "Here is what you can currently do:\n"
+		for k, v := range commandUsage {
+			writeStr += fmt.Sprintf("-%s: %s\n", k, v)
+		}
+
+		WriteOutputToTerminal(g, writeStr)
+
 	}
 
 	// If we look, read the current description of the Location we are in
