@@ -30,17 +30,24 @@ func WriteOutputToTerminal(g *Game, str string) {
 
 	newText := ""
 
+	a := 0
 	for i := range str {
-		a := i
+
+		// Restart our column counter if we have a new line
 		letter := string(str[i])
 		newText += letter
 
-		// Restart our column counter if we have a new line, because duh
-
-		if a%textWidth == 0 {
-			newText += "\n"
+		if letter == "\n" {
 			a = 0
 		}
+
+		if a%textWidth == 0 && a != 0 {
+			newText += "\n"
+			a = 0
+			continue
+		}
+
+		a = a+1
 	}
 
 	g.text += fmt.Sprintf("%s", newText)
