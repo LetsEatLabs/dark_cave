@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strings"
 
 	"github.com/hajimehoshi/ebiten/v2"
@@ -11,6 +12,7 @@ import (
 
 var knownCommands = []string{
 	"help",
+	"exit",
 }
 
 func MoveInputToTerminal(g *Game) {
@@ -63,6 +65,11 @@ func HandleCommand(g *Game, command []string) {
 		WriteOutputToTerminal(g, writeStr)
 
 		return
+	}
+
+	// Are we quitting?
+	if command[0] == "exit" {
+		os.Exit(0)
 	}
 }
 
