@@ -8,9 +8,10 @@ import (
 
 // Locations object
 type Location struct {
-	Name               string   `json:"name"`
-	CurrentDescription int      `json:"current_description"`
-	Decriptions        []string `json:"descriptions"`
+	Name               string          `json:"name"`
+	CurrentDescription int             `json:"current_description"`
+	Decriptions        []string        `json:"descriptions"`
+	ConnectedLocations map[string]bool `json:"connected_locations"`
 }
 
 func loadGameLocations(g *Game) {

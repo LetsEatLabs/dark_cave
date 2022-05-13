@@ -3,13 +3,19 @@
         "current_description": 0,
         "descriptions": [
             "You are standing in a cold, dark cave. You are looking directly into the darkness. You can feel the cold breeze on your neck indicating to you that the entrance is behind you."
-        ]
+        ],
+        "connected_locations": {
+            "dark_cave_interior": false
+        }
     },
     {   "name": "testing_void",
         "current_description": 0,
         "descriptions": [
             "I am an inky pink void for testing purposes. How did you get in here?",
             "No seriously, how?"
-        ]
+        ],
+        "connected_locations": {
+            "other_testing_void": true
+        }
     }
 ]
