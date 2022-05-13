@@ -68,13 +68,18 @@ func loadObjectDetails(g *Game) {
 
 // Reads the location description based on the current decription value in the Location
 // object. Writes it to the terminal.
-func readLocationDesc(loc string, g *Game) {
+func readLocationDesc(loc string, g *Game) string {
+
+	rtr := ""
+
 	for l := range g.locations {
 		if loc == g.locations[l].Name {
 			desc_num := g.locations[l].CurrentDescription
-			WriteOutputToTerminal(g, g.locations[l].Decriptions[desc_num])
+			rtr = g.locations[l].Decriptions[desc_num]
 		}
 	}
+
+	return rtr
 }
 
 func examineItem(g *Game, item []string) {
@@ -95,4 +100,57 @@ func examineItem(g *Game, item []string) {
 	// If the item is not found, complain
 	WriteOutputToTerminal(g, fmt.Sprintf("You do not see %s here.", strings.Join(item, " ")))
 	return
+}
+
+// Get a list of all items that are current in a location
+// if visible=true then will only return items marked as visible
+func getLocationItems(g *Game, loc string, visible bool) []string {
+	var objNames []string
+
+	for i := range g.locations {
+		if g.locations[i].Name == loc {
+			for t := range g.locations[i].Objects {
+				ob := g.locations[i].Objects[t]
+				obName := strings.Replace(ob.Name, "_", " ", -1)
+
+				if visible {
+					if ob.Visible {
+						objNames = append(objNames, obName)
+					}
+
+				} else {
+					objNames = append(objNames, obName)
+				}
+
+			}
+		}
+	}
+
+	return objNames
+}
+
+// Get a list of all locations that are currented to the current location
+// if visible=true then will only return items marked as visible
+func getLocationConnectedLocations(g *Game, loc string, visible bool) []string {
+	var locNames []string
+
+	for i := range g.locations {
+		if g.locations[i].Name == loc {
+			for k, v := range g.locations[i].ConnectedLocations {
+				kName := strings.Replace(k, "_", " ", -1)
+
+				if visible {
+					if v {
+						locNames = append(locNames, kName)
+					}
+				} else {
+					locNames = append(locNames, kName)
+				}
+
+			}
+		}
+
+	}
+
+	return locNames
 }

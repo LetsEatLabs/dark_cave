@@ -1,16 +1,23 @@
 [
-    {   "name": "dark_cave_entrance",
+    {   "name": "cave_entrance",
         "current_description": 0,
         "descriptions": [
             "You are standing in a cold, dark cave. You are looking directly into the darkness. You can feel the cold breeze on your neck indicating to you that the entrance is behind you."
         ],
         "connected_locations": {
-            "dark_cave_interior": true,
-            "dark_cave_exterior": true
+            "cave_interior": true,
+            "cave_exterior": true
         },
         "objects": [
             {
                 "name": "cave_book",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            },
+            {
+                "name": "blue_rope",
                 "can_pickup": true,
                 "is_visible": true,
                 "interacted": false,

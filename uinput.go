@@ -121,7 +121,23 @@ func HandleCommand(g *Game, command []string) {
 
 	// If we look, read the current description of the Location we are in
 	if command[0] == "look" {
-		readLocationDesc(g.currentLocation, g)
+		locDesc := readLocationDesc(g.currentLocation, g)
+
+		// List of items that the player can interact with
+		locObjs := getLocationItems(g, g.currentLocation, true)
+
+		// List of places the player can currently go
+		conLocs := getLocationConnectedLocations(g, g.currentLocation, true)
+
+		// Combine the items
+		writeStr := fmt.Sprintf("%s\n\nYou can see these items: %s\n",
+			locDesc,
+			strings.Join(locObjs, ", "))
+
+		writeStr += fmt.Sprintf("You can go to these places: %s\n", strings.Join(conLocs, ", "))
+
+		WriteOutputToTerminal(g, writeStr)
+
 	}
 
 	// Examine an item
