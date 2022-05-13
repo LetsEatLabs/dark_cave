@@ -17,9 +17,14 @@ import (
 
 // Global constants
 const (
-	screenWidth  = 640
-	screenHeight = 480
-	textWidth    = 70 // Columns
+	screenWidth         = 640
+	screenHeight        = 480
+	textWidth           = 70 // Columns
+	textAreaX           = 40
+	textAreaY           = 40
+	playerTextAreaLineY = 420
+	playerTextAreaX     = 40
+	playerTextAreaY     = 440
 )
 
 // Global Vars
@@ -95,11 +100,11 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	}
 
 	// Player input area
-	ebitenutil.DrawLine(screen, 0, 420, screenWidth, 420, color.White)
-	text.Draw(screen, g.playerInputText, mplusNormalFont, 40, 440, color.White)
+	ebitenutil.DrawLine(screen, 0, playerTextAreaLineY, screenWidth, playerTextAreaLineY, color.White)
+	text.Draw(screen, g.playerInputText, mplusNormalFont, playerTextAreaX, playerTextAreaY, color.White)
 
 	// Text Display
-	text.Draw(screen, g.text, mplusNormalFont, 40, 40, color.White)
+	text.Draw(screen, g.text, mplusNormalFont, textAreaX, textAreaY, color.White)
 }
 
 func main() {
