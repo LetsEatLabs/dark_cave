@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"os"
 	"strings"
-
-	"github.com/hajimehoshi/ebiten/v2"
 )
 
 // Definitions
@@ -13,15 +11,16 @@ import (
 var knownCommands = []string{
 	"help",
 	"look",
+	"examine",
 	"exit",
 }
 
-var commandUsage = map[string]string {
-	"help": "Displays this information",
-	"look": "You look around your current surroundings",
-	"exit": "You go home",
+var commandUsage = map[string]string{
+	"help":    "Displays this information",
+	"look":    "You look around your current surroundings",
+	"examine": "Investigate a particular item in the area",
+	"exit":    "You go home",
 }
-
 
 // Writes the user input to the terminal and then clears the user input field
 func MoveInputToTerminal(g *Game) {
@@ -40,7 +39,6 @@ func WriteOutputToTerminal(g *Game, str string) {
 	a := 0
 	for i := range str {
 
-		
 		letter := string(str[i])
 		newText += letter
 
@@ -55,7 +53,7 @@ func WriteOutputToTerminal(g *Game, str string) {
 			continue
 		}
 
-		a = a+1
+		a = a + 1
 	}
 
 	g.text += fmt.Sprintf("%s", newText)
@@ -125,8 +123,10 @@ func HandleCommand(g *Game, command []string) {
 	if command[0] == "look" {
 		readLocationDesc(g.currentLocation, g)
 	}
-}
 
-func RepeatKeyPressed(key ebiten.Key) {
-	// pass
+	// Examine an item
+
+	if command[0] == "examine" {
+		examineItem(g, command[1:])
+	}
 }
