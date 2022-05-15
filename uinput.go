@@ -9,6 +9,7 @@ import (
 // Definitions
 
 var knownCommands = []string{
+	"goto",
 	"help",
 	"look",
 	"examine",
@@ -16,6 +17,7 @@ var knownCommands = []string{
 }
 
 var commandUsage = map[string]string{
+	"goto":    "Go to a location from your current location, if possible",
 	"help":    "Displays this information",
 	"look":    "You look around your current surroundings",
 	"examine": "Investigate a particular item in the area",
@@ -141,8 +143,12 @@ func HandleCommand(g *Game, command []string) {
 	}
 
 	// Examine an item
-
 	if command[0] == "examine" {
 		examineItem(g, command[1:])
+	}
+
+	// Go somewhere
+	if command[0] == "goto" {
+		goToLocation(g, command[1:])
 	}
 }

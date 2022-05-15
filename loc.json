@@ -25,6 +25,15 @@
             }
         ]
     },
+    {   "name": "cave_interior",
+        "current_description": 0,
+        "descriptions": [
+            "You are actually in the back of the cave. It does not go back very deep, it is just incredibly dark."
+        ],
+        "connected_locations": {
+            "cave_entrance": true
+        }
+    },
     {   "name": "testing_void",
         "current_description": 0,
         "descriptions": [
