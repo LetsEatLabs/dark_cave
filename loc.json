@@ -87,7 +87,7 @@
             "A very worn down shed. You can see right through the broken door. There are flies everywhere, and what appears to be a pile of viscious pink slop on the floor. There are no tools in the shed."
         ],
         "connected_locations": {
-            "fence_path": true,
+            "fence_path": true
         },
         "objects": [
             {
@@ -106,11 +106,87 @@
         ],
         "connected_locations": {
             "fence_path": true,
-            "farm_house": true
+            "farm_house_door": true
         },
         "objects": [
             {
                 "name": "tomato_seeds",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
+    },
+    {   "name": "farm_house_door",
+        "current_description": 0,
+        "descriptions": [
+            "A long ago burned out farm house. The windows are broken, the floors and walls are charred black. The roof has collapsed in several places. There is one clear path through the charcoal that indicates it is frequently walked, exactly."
+        ],
+        "connected_locations": {
+            "garden": true,
+            "kitchen": true
+        },
+        "objects": [
+            {
+                "name": "scarf",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
+    },
+    {   "name": "kitchen",
+        "current_description": 0,
+        "descriptions": [
+            "The kitchen is burned to a crisp. There isn't much left here, apart from long rusted iron pans. There is one path through the kitchen where it appears that feet have cleared the ash due to frequent use."
+        ],
+        "connected_locations": {
+            "farm_house_door": true,
+            "hallway": true
+        },
+        "objects": [
+            {
+                "name": "rusty_pan",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
+    },
+    {   "name": "hallway",
+        "current_description": 0,
+        "descriptions": [
+            "A not-so-empty hallways. There are frames on the walls but with no photos inside of them. The charred carpet that runs the length of the hallway was clearly once a vibrant red."
+        ],
+        "connected_locations": {
+            "kitchen": true,
+            "parlor": true
+        },
+        "objects": [
+            {
+                "name": "light_switch",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
+    },
+    {   "name": "parlor",
+        "current_description": 0,
+        "descriptions": [
+            "A destroyed parlor. The once nice endtables thrown over and burned. The light coming in from the broken windows gives evidence to the luxury that apparently once existed."
+        ],
+        "connected_locations": {
+            "kitchen": true,
+            "parlor": true
+        },
+        "objects": [
+            {
+                "name": "photo",
                 "can_pickup": true,
                 "is_visible": true,
                 "interacted": false,
