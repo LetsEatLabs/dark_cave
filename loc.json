@@ -140,11 +140,13 @@
     {   "name": "kitchen",
         "current_description": 0,
         "descriptions": [
-            "The kitchen is burned to a crisp. There isn't much left here, apart from long rusted iron pans. There is one path through the kitchen where it appears that feet have cleared the ash due to frequent use."
+            "The kitchen is burned to a crisp. There isn't much left here, apart from long rusted iron pans. There is one path through the kitchen where it appears that feet have cleared the ash due to frequent use.",
+            "The kitchen is burned out. You notice a pantry door that you did not see before. The door is ajar."
         ],
         "connected_locations": {
             "farm_house_door": true,
-            "hallway": true
+            "hallway": true,
+            "pantry": false
         },
         "objects": [
             {
@@ -159,7 +161,8 @@
     {   "name": "hallway",
         "current_description": 0,
         "descriptions": [
-            "A not-so-empty hallways. There are frames on the walls but with no photos inside of them. The charred carpet that runs the length of the hallway was clearly once a vibrant red."
+            "A not-so-empty hallways. There are frames on the walls but with no photos inside of them. The charred carpet that runs the length of the hallway was clearly once a vibrant red.",
+            "The hallway seems more full than earlier. Looking closely you realize that the picture frames now all container portraits of you and what appears to be a family around you."
         ],
         "connected_locations": {
             "kitchen": true,
@@ -181,8 +184,8 @@
             "A destroyed parlor. The once nice endtables thrown over and burned. The light coming in from the broken windows gives evidence to the luxury that apparently once existed."
         ],
         "connected_locations": {
-            "kitchen": true,
-            "parlor": true
+            "hallway": true,
+            "front_door": false
         },
         "objects": [
             {

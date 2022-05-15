@@ -170,4 +170,8 @@ func HandleCommand(g *Game, command []string) {
 	if command[0] == "goto" {
 		goToLocation(g, command[1:])
 	}
+
+
+	// Check if any scripting was attached to this successful command
+	checkForScripting(g, command[0], command[1:])
 }
