@@ -158,7 +158,7 @@ func getLocationConnectedLocations(g *Game, loc string, visible bool) []string {
 }
 
 // Changes the location to the one the player requested, if we can go there
-func goToLocation(g *Game, locstr []string) {
+func goToLocation(g *Game, locstr []string) bool {
 
 	loc := strings.Join(locstr, " ")
 
@@ -168,12 +168,11 @@ func goToLocation(g *Game, locstr []string) {
 	for l := range connected_locs {
 		if connected_locs[l] == loc {
 			g.currentLocation = strings.Replace(loc, " ", "_", -1)
-			WriteOutputToTerminal(g, fmt.Sprintf("You go to %s", loc))
-			return
+			return true
 		}
 	}
 
 	// If this is not a location we can go to then complain
 	WriteOutputToTerminal(g, fmt.Sprintf("You cannot get to %s from here", loc))
-
+	return false
 }

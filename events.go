@@ -43,12 +43,29 @@ func updateConnectedLocationVisibility(g *Game, loc string, connected_loc string
 		}
 }
 
+func updateLocationItemVisibility(g *Game, loc string, item string, val bool) {
+	for l := range g.locations {
+			if loc == g.locations[l].Name {
+				for i := range g.locations[l].Objects {
+					if g.locations[l].Objects[i].Name == item {
+						g.locations[l].Objects[i].Visible = val
+						return
+					}
+					
+				}
+				
+			}
+		}
+}
+
 /////
+
 
 // If something has scripting associated with examining it, put it in here
 func handleExamineScripting(g *Game, cmdArgs []string) {
 	exobj := strings.Join(cmdArgs, "_")
 
+	// Picking up the photo in the parlor
 	if exobj == "photo" && g.currentLocation == "parlor" {
 		updateLocationDescription(g, "hallway", 1)
 		updateLocationDescription(g, "kitchen", 1)
@@ -60,5 +77,15 @@ func handleExamineScripting(g *Game, cmdArgs []string) {
 
 // If a place has scripting associated with going to it, put it in here
 func handleGoToScripting(g *Game, cmdArgs []string) {
-	//pass
+	exobj := strings.Join(cmdArgs, "_")
+
+	// Entering the kitchen
+	if exobj == "kitchen" {
+		updateLocationDescription(g, "garden", 1)
+		updateLocationItemVisibility(g, "garden", "tomato_seeds", false)
+	}
+
+	if exobj == "pantry" {
+		updateLocationItemVisibility(g, "kitchen", "recipe", false)
+	}
 }

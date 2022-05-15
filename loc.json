@@ -102,7 +102,8 @@
     {   "name": "garden",
         "current_description": 0,
         "descriptions": [
-            "A long dead and dry garden, not even animal prints can be found here."
+            "A long dead and dry garden, not even animal prints can be found here.",
+            "The dead and dry garden has what appears to be fresh boot prints in the dirt. There is no longer any evidence of a tomato seed packet."
         ],
         "connected_locations": {
             "fence_path": true,
@@ -140,7 +141,7 @@
     {   "name": "kitchen",
         "current_description": 0,
         "descriptions": [
-            "The kitchen is burned to a crisp. There isn't much left here, apart from long rusted iron pans. There is one path through the kitchen where it appears that feet have cleared the ash due to frequent use.",
+            "The kitchen is burned to a crisp. There isn't much left here, apart from long rusted iron pans. There is one path through the kitchen where it appears that feet have cleared the ash due to frequent use. You hear a sound from the garden.",
             "The kitchen is burned out. You notice a pantry door that you did not see before. The door is ajar."
         ],
         "connected_locations": {
@@ -151,6 +152,24 @@
         "objects": [
             {
                 "name": "rusty_pan",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
+    },
+    {   "name": "pantry",
+        "current_description": 0,
+        "descriptions": [
+            "All of the shelves but one have fallent to the floor. The one remaining shelf has a dusty jar of what is labeled as 'pickled'. You hear something from the kitchen."
+        ],
+        "connected_locations": {
+            "kitchen": true
+        },
+        "objects": [
+            {
+                "name": "jar",
                 "can_pickup": true,
                 "is_visible": true,
                 "interacted": false,

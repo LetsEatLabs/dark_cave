@@ -57,9 +57,9 @@ func WriteOutputToTerminal(g *Game, str string) {
 
 		// Check if there is a space coming up soon and break early to prevent
 		// Word wrap if we can
-		if textWidth - 5 == i {
+		if textWidth-5 == i {
 			cont := false
-			for t:=i+4; t > i+4; t-- {
+			for t := i + 4; t > i+4; t-- {
 				if string(str[t]) == " " {
 					newText += "\n"
 					a = 0
@@ -72,7 +72,6 @@ func WriteOutputToTerminal(g *Game, str string) {
 				continue
 			}
 		}
-
 
 		a = a + 1
 	}
@@ -142,21 +141,7 @@ func HandleCommand(g *Game, command []string) {
 
 	// If we look, read the current description of the Location we are in
 	if command[0] == "look" {
-		locDesc := readLocationDesc(g.currentLocation, g)
-
-		// List of items that the player can interact with
-		locObjs := getLocationItems(g, g.currentLocation, true)
-
-		// List of places the player can currently go
-		conLocs := getLocationConnectedLocations(g, g.currentLocation, true)
-
-		// Combine the items
-		writeStr := fmt.Sprintf("%s\n\nYou can see these items: %s\n",
-			locDesc,
-			strings.Join(locObjs, ", "))
-
-		writeStr += fmt.Sprintf("You can go to these places: %s\n", strings.Join(conLocs, ", "))
-
+		writeStr := getFullAreaDescription(g)
 		WriteOutputToTerminal(g, writeStr)
 
 	}
@@ -166,12 +151,37 @@ func HandleCommand(g *Game, command []string) {
 		examineItem(g, command[1:])
 	}
 
-	// Go somewhere
+	// Go somewhere (which also does a 'look' in the new area)
 	if command[0] == "goto" {
-		goToLocation(g, command[1:])
-	}
+		realLoc := goToLocation(g, command[1:])
 
+		if realLoc {
+			writeStr := getFullAreaDescription(g)
+			WriteOutputToTerminal(g, writeStr)
+		}
+
+	}
 
 	// Check if any scripting was attached to this successful command
 	checkForScripting(g, command[0], command[1:])
+}
+
+// Returns a full description of the current area that a player is standing in.
+func getFullAreaDescription(g *Game) string {
+	locDesc := readLocationDesc(g.currentLocation, g)
+
+	// List of items that the player can interact with
+	locObjs := getLocationItems(g, g.currentLocation, true)
+
+	// List of places the player can currently go
+	conLocs := getLocationConnectedLocations(g, g.currentLocation, true)
+
+	// Combine the items
+	writeStr := fmt.Sprintf("%s\n\nYou can see these items: %s\n",
+		locDesc,
+		strings.Join(locObjs, ", "))
+
+	writeStr += fmt.Sprintf("You can go to these places: %s\n", strings.Join(conLocs, ", "))
+
+	return writeStr
 }
