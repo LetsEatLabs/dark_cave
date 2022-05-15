@@ -10,7 +10,7 @@
         },
         "objects": [
             {
-                "name": "cave_book",
+                "name": "blue_book",
                 "can_pickup": true,
                 "is_visible": true,
                 "interacted": false,
@@ -32,7 +32,91 @@
         ],
         "connected_locations": {
             "cave_entrance": true
-        }
+        },
+        "objects": [
+            {
+                "name": "blue_box",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
+    },
+    {   "name": "cave_exterior",
+        "current_description": 0,
+        "descriptions": [
+            "You are outside the entrance to the cave. Looking around you can see you are on some sort of rural farm property. However it seems disused as the wooden fences are almost entirely broken."
+        ],
+        "connected_locations": {
+            "fence_path": true
+        },
+        "objects": [
+            {
+                "name": "blue_shoe",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
+    },
+    {   "name": "fence_path",
+        "current_description": 0,
+        "descriptions": [
+            "A dirt path that goes parallel to the broken wooden fences. Desipte everything seemingly dilapidating around you the path appears frequently walked on."
+        ],
+        "connected_locations": {
+            "cave_exterior": true,
+            "shed": true,
+            "garden": true
+        },
+        "objects": [
+            {
+                "name": "fence",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
+    },
+    {   "name": "shed",
+        "current_description": 0,
+        "descriptions": [
+            "A very worn down shed. You can see right through the broken door. There are flies everywhere, and what appears to be a pile of viscious pink slop on the floor. There are no tools in the shed."
+        ],
+        "connected_locations": {
+            "fence_path": true,
+        },
+        "objects": [
+            {
+                "name": "muddy_shoe",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
+    },
+    {   "name": "garden",
+        "current_description": 0,
+        "descriptions": [
+            "A long dead and dry garden, not even animal prints can be found here."
+        ],
+        "connected_locations": {
+            "fence_path": true,
+            "farm_house": true
+        },
+        "objects": [
+            {
+                "name": "tomato_seeds",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
     },
     {   "name": "testing_void",
         "current_description": 0,

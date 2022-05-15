@@ -1,4 +1,10 @@
 {
-    "cave_book": "The book is a deep red color, bound in what appears to be some form on ancient leather. The book feels warm as if it was held recently. The contents are in some language you do not understand.",
-    "blue_rope": "A frayed, blue rope. It is taped near the ends to prevent it from comine completely undone. There appears to be some fresh mud all over it."
+    "blue_book": "The book is a deep red color, bound in what appears to be some form on ancient leather. The book feels warm as if it was held recently. The contents are in some language you do not understand.",
+    "blue_rope": "A frayed, blue rope. It is taped near the ends to prevent it from comine completely undone. There appears to be some fresh mud all over it.",
+    "blue_box": "A wooden crate painted periwinkle blue. It is covered in muddy handprints.",
+    "blue_shoe": "A periwinkle blue shoe. Surprsingly not covered with mud.",
+    "muddy_shoe": "A periwinkle blue shoe completely covered with mud. There are a few flies on it.",
+    "fence": "A particularly broken wooden log fence.",
+    "tomato_seeds": "A pouch of tomato seeds. It says that they expired 17 years ago. It seems odd that a paper package durvived outdoors that long.",
+
 }
