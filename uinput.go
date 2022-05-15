@@ -55,6 +55,25 @@ func WriteOutputToTerminal(g *Game, str string) {
 			continue
 		}
 
+		// Check if there is a space coming up soon and break early to prevent
+		// Word wrap if we can
+		if textWidth - 5 == i {
+			cont := false
+			for t:=i+4; t > i+4; t-- {
+				if string(str[t]) == " " {
+					newText += "\n"
+					a = 0
+					cont = true
+					break
+				}
+			}
+
+			if cont == true {
+				continue
+			}
+		}
+
+
 		a = a + 1
 	}
 

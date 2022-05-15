@@ -35,6 +35,7 @@ func loadGameLocations(g *Game) {
 	content, err := ioutil.ReadFile("./loc.json")
 
 	if err != nil {
+		log.Println("Unable to open loc.json")
 		log.Fatal(err)
 	}
 
@@ -54,6 +55,7 @@ func loadObjectDetails(g *Game) {
 	content, err := ioutil.ReadFile("./objs.json")
 
 	if err != nil {
+		log.Println("Unable to open objs.json")
 		log.Fatal(err)
 	}
 
