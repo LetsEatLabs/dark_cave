@@ -25,6 +25,7 @@ const (
 	playerTextAreaLineY = 420
 	playerTextAreaX     = 40
 	playerTextAreaY     = 440
+	wrapDistance        = 8 // Text wrap check distance
 )
 
 // Global Vars

@@ -40,13 +40,20 @@
                 "is_visible": true,
                 "interacted": false,
                 "total": 1
+            },
+            {
+                "name": "dirt_pile",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
             }
         ]
     },
     {   "name": "cave_exterior",
         "current_description": 0,
         "descriptions": [
-            "You are outside the entrance to the cave. Looking around you can see you are on some sort of rural farm property. However it seems disused as the wooden fences are almost entirely broken."
+            "You are outside the entrance to the cave. Looking around you can see you are on some sort of rural farm property. However it seems unused as the wooden fences are almost entirely broken."
         ],
         "connected_locations": {
             "fence_path": true
@@ -64,7 +71,7 @@
     {   "name": "fence_path",
         "current_description": 0,
         "descriptions": [
-            "A dirt path that goes parallel to the broken wooden fences. Desipte everything seemingly dilapidating around you the path appears frequently walked on."
+            "A dirt path that goes parallel to the broken wooden fences. Desipte everything seemingly falling apart around you the path appears frequently walked on."
         ],
         "connected_locations": {
             "cave_exterior": true,
@@ -84,7 +91,7 @@
     {   "name": "shed",
         "current_description": 0,
         "descriptions": [
-            "A very worn down shed. You can see right through the broken door. There are flies everywhere, and what appears to be a pile of viscious pink slop on the floor. There are no tools in the shed."
+            "A very worn down shed. You can see right through the broken door. There are flies everywhere, and what appears to be a pile of viscous pink slop on the floor. There are no tools in the shed."
         ],
         "connected_locations": {
             "fence_path": true
@@ -92,6 +99,20 @@
         "objects": [
             {
                 "name": "muddy_shoe",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            },
+            {
+                "name": "slop",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            },
+            {
+                "name": "wallet",
                 "can_pickup": true,
                 "is_visible": true,
                 "interacted": false,
@@ -156,6 +177,13 @@
                 "is_visible": true,
                 "interacted": false,
                 "total": 1
+            },
+            {
+                "name": "recipe",
+                "can_pickup": true,
+                "is_visible": false,
+                "interacted": false,
+                "total": 1
             }
         ]
     },
@@ -181,7 +209,7 @@
         "current_description": 0,
         "descriptions": [
             "A not-so-empty hallways. There are frames on the walls but with no photos inside of them. The charred carpet that runs the length of the hallway was clearly once a vibrant red.",
-            "The hallway seems more full than earlier. Looking closely you realize that the picture frames now all container portraits of you and what appears to be a family around you."
+            "The hallway seems more full than earlier. Looking closely you realize that the picture frames now all contain portraits of you and what appears to be a family around you."
         ],
         "connected_locations": {
             "kitchen": true,
