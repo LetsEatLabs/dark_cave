@@ -162,6 +162,12 @@ func goToLocation(g *Game, locstr []string) bool {
 
 	loc := strings.Join(locstr, " ")
 
+	// If the game is in debug mode, just go wherever we ask. Even if it doesnt exist.
+	if g.isDebug {
+		g.currentLocation = strings.Replace(loc, " ", "_", -1)
+		return true
+	}
+
 	// First check to see if the player can get there from here
 	connected_locs := getLocationConnectedLocations(g, g.currentLocation, true)
 

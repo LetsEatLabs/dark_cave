@@ -41,6 +41,7 @@ type Game struct {
 	counter         int
 	locations       []Location
 	currentLocation string
+	isDebug         bool
 }
 
 // Initialize some things
@@ -109,6 +110,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 
 func main() {
 	g := &Game{}
+	g.isDebug = false // Debug mode is off by default. To turn on, type "debug on"
 
 	// Set up text area
 	g.ps1 = "> "

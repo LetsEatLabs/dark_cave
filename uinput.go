@@ -112,6 +112,21 @@ func CheckIfListHasString(str string, arr []string) bool {
 // Call that command's methods
 func HandleCommand(g *Game, command []string) {
 
+	if command[0] == "debug" {
+		if command[1] == "on" {
+			g.isDebug = true
+			WriteOutputToTerminal(g, "Debug mode is enabled.")
+			return
+		}
+
+		if command[1] == "off" {
+			g.isDebug = false
+			WriteOutputToTerminal(g, "Debug mode is disabled.")
+			return
+		}
+
+	}
+
 	// Do we know this command?
 	if !CheckIfListHasString(command[0], knownCommands) {
 		writeStr := fmt.Sprintf("I do not know what %s means. I know these things: \n- %s",
