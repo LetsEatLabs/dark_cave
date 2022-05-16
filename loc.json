@@ -269,7 +269,15 @@
             "dining_room": true,
             "quarters": true
         },
-        "objects": []
+        "objects": [
+            {
+                "name": "fabric",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
     },
     {   "name": "dining_room",
         "current_description": 0,
@@ -285,8 +293,7 @@
     {   "name": "quarters",
         "current_description": 0,
         "descriptions": [
-            "I am an inky pink void for testing purposes. How did you get in here?",
-            "No seriously, how?"
+            "A barracks like housing full of beds and storage cabinets. Everything is torn apart and aged very poorly. It is clear that whenever this particular building was abandoned everything happened at once.\n\nThere is so much debris and torn cloth that is it difficult to have your feet touch the floor."
         ],
         "connected_locations": {
             "other_testing_void": true
