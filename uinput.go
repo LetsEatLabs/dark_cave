@@ -62,13 +62,19 @@ func WriteOutputToTerminal(g *Game, str string) {
 
 		if spaceLeft < wrapDistance {
 			if spaceLeft > 0 {
-				for t := 0; t < spaceLeft; t++ {
-					if string(str[t+i]) == " " {
-						newText += "\n"
-						a = 0
-						break
+				if letter == " " {
+					for t := 0; t < spaceLeft; t++ {
+						if i+t < len(str) {
+							if string(str[t+i]) == " " {
+								newText += "\n"
+								a = 0
+								break
+							}
+						}
+
 					}
 				}
+
 			}
 		}
 
