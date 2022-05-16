@@ -70,6 +70,13 @@ func handleExamineScripting(g *Game, cmdArgs []string) {
 		updateLocationDescription(g, "kitchen", 1)
 		updateConnectedLocationVisibility(g, "kitchen", "pantry", true)
 	}
+
+	// Picking up the keys in the pantry
+	if exobj == "keys" && g.currentLocation == "pantry" {
+		updateLocationDescription(g, "parlor", 1)
+		updateConnectedLocationVisibility(g, "parlor", "courtyard", true)
+		updateLocationItemVisibility(g, "pantry", "keys", false)
+	}
 }
 
 // If a place has scripting associated with going to it, put it in here

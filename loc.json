@@ -137,6 +137,13 @@
                 "is_visible": true,
                 "interacted": false,
                 "total": 1
+            },
+            {
+                "name": "pail",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
             }
         ]
     },
@@ -162,7 +169,7 @@
     {   "name": "kitchen",
         "current_description": 0,
         "descriptions": [
-            "The kitchen is burned to a crisp. There isn't much left here, apart from long rusted iron pans. There is one path through the kitchen where it appears that feet have cleared the ash due to frequent use. You hear a sound from the garden.",
+            "The kitchen is burned to a crisp. There isn't much left here, apart from long rusted iron pans. There is one path through the kitchen where it appears that feet have cleared the ash due to frequent use.\n\nYou hear a sound from the garden.",
             "The kitchen is burned out. You notice a pantry door that you did not see before. The door is ajar."
         ],
         "connected_locations": {
@@ -190,7 +197,7 @@
     {   "name": "pantry",
         "current_description": 0,
         "descriptions": [
-            "All of the shelves but one have fallent to the floor. The one remaining shelf has a dusty jar of what is labeled as 'pickled'. You hear something from the kitchen."
+            "All of the shelves but one have fallent to the floor. The one remaining shelf has a dusty jar of what is labeled as 'pickled'. You also see a ring of keys.\n\nYou hear something from the kitchen."
         ],
         "connected_locations": {
             "kitchen": true
@@ -202,7 +209,15 @@
                 "is_visible": true,
                 "interacted": false,
                 "total": 1
+            },
+            {
+                "name": "keys",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
             }
+
         ]
     },
     {   "name": "hallway",
@@ -228,11 +243,12 @@
     {   "name": "parlor",
         "current_description": 0,
         "descriptions": [
-            "A destroyed parlor. The once nice endtables thrown over and burned. The light coming in from the broken windows gives evidence to the luxury that apparently once existed."
+            "A destroyed parlor. The once nice endtables thrown over and burned. The light coming in from the broken windows gives evidence to the luxury that apparently once existed. There is a wooden door at the other end of the room - it is locked.",
+            "A destroyed parlor. The once nice endtables thrown over and burned. The light coming in from the broken windows gives evidence to the luxury that apparently once existed. There is a wooden door at the other end of the room."
         ],
         "connected_locations": {
             "hallway": true,
-            "front_door": false
+            "courtyard": false
         },
         "objects": [
             {
@@ -244,6 +260,39 @@
             }
         ]
     },
+    {   "name": "courtyard",
+        "current_description": 0,
+        "descriptions": [
+            "A faded courtyard. It was clearly never terribly fancy, but it does have a stone floor. The views of the surrounding forrested hills is quite pleasant. You can always feel a breeze in just the right spot while you are standing here."
+        ],
+        "connected_locations": {
+            "dining_room": true,
+            "quarters": true
+        },
+        "objects": []
+    },
+    {   "name": "dining_room",
+        "current_description": 0,
+        "descriptions": [
+            "I am an inky pink void for testing purposes. How did you get in here?",
+            "No seriously, how?"
+        ],
+        "connected_locations": {
+            "other_testing_void": true
+        },
+        "objects": []
+    },
+    {   "name": "quarters",
+        "current_description": 0,
+        "descriptions": [
+            "I am an inky pink void for testing purposes. How did you get in here?",
+            "No seriously, how?"
+        ],
+        "connected_locations": {
+            "other_testing_void": true
+        },
+        "objects": []
+    },
     {   "name": "testing_void",
         "current_description": 0,
         "descriptions": [
@@ -252,6 +301,7 @@
         ],
         "connected_locations": {
             "other_testing_void": true
-        }
+        },
+        "objects": []
     }
 ]
