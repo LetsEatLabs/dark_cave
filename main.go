@@ -121,6 +121,9 @@ func main() {
 	loadObjectDetails(g)
 	g.currentLocation = "cave_entrance"
 
+	// Starting text
+	g.text = "You realize that you have been having a day dream for a few seconds. \n\nType 'look' to look around. Type 'help' for more."
+
 	if err := ebiten.RunGame(g); err != nil {
 		log.Fatal(err)
 	}
