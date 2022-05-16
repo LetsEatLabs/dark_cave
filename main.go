@@ -17,9 +17,14 @@ import (
 
 // Global constants
 const (
-	screenWidth  = 640
-	screenHeight = 480
-	textWidth    = 70 // Columns
+	screenWidth         = 640
+	screenHeight        = 480
+	textWidth           = 70 // Columns
+	textAreaX           = 40
+	textAreaY           = 40
+	playerTextAreaLineY = 420
+	playerTextAreaX     = 40
+	playerTextAreaY     = 440
 )
 
 // Global Vars
@@ -95,11 +100,11 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	}
 
 	// Player input area
-	ebitenutil.DrawLine(screen, 0, 420, screenWidth, 420, color.White)
-	text.Draw(screen, g.playerInputText, mplusNormalFont, 40, 440, color.White)
+	ebitenutil.DrawLine(screen, 0, playerTextAreaLineY, screenWidth, playerTextAreaLineY, color.White)
+	text.Draw(screen, g.playerInputText, mplusNormalFont, playerTextAreaX, playerTextAreaY, color.White)
 
 	// Text Display
-	text.Draw(screen, g.text, mplusNormalFont, 40, 40, color.White)
+	text.Draw(screen, g.text, mplusNormalFont, textAreaX, textAreaY, color.White)
 }
 
 func main() {
@@ -113,7 +118,11 @@ func main() {
 
 	// Load the narrative
 	loadGameLocations(g)
-	g.currentLocation = "testing_void"
+	loadObjectDetails(g)
+	g.currentLocation = "cave_entrance"
+
+	// Starting text
+	g.text = "You realize that you have been having a day dream for a few seconds. \n\nType 'look' to look around. Type 'help' for more."
 
 	if err := ebiten.RunGame(g); err != nil {
 		log.Fatal(err)

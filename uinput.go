@@ -4,24 +4,25 @@ import (
 	"fmt"
 	"os"
 	"strings"
-
-	"github.com/hajimehoshi/ebiten/v2"
 )
 
 // Definitions
 
 var knownCommands = []string{
+	"goto",
 	"help",
 	"look",
+	"examine",
 	"exit",
 }
 
-var commandUsage = map[string]string {
-	"help": "Displays this information",
-	"look": "You look around your current surroundings",
-	"exit": "You go home",
+var commandUsage = map[string]string{
+	"goto":    "Go to a location from your current location, if possible",
+	"help":    "Displays this information",
+	"look":    "You look around your current surroundings",
+	"examine": "Investigate a particular item in the area",
+	"exit":    "You go home",
 }
-
 
 // Writes the user input to the terminal and then clears the user input field
 func MoveInputToTerminal(g *Game) {
@@ -40,7 +41,6 @@ func WriteOutputToTerminal(g *Game, str string) {
 	a := 0
 	for i := range str {
 
-		
 		letter := string(str[i])
 		newText += letter
 
@@ -55,7 +55,25 @@ func WriteOutputToTerminal(g *Game, str string) {
 			continue
 		}
 
-		a = a+1
+		// Check if there is a space coming up soon and break early to prevent
+		// Word wrap if we can
+		if textWidth-5 == i {
+			cont := false
+			for t := i + 4; t > i+4; t-- {
+				if string(str[t]) == " " {
+					newText += "\n"
+					a = 0
+					cont = true
+					break
+				}
+			}
+
+			if cont == true {
+				continue
+			}
+		}
+
+		a = a + 1
 	}
 
 	g.text += fmt.Sprintf("%s", newText)
@@ -123,10 +141,47 @@ func HandleCommand(g *Game, command []string) {
 
 	// If we look, read the current description of the Location we are in
 	if command[0] == "look" {
-		readLocationDesc(g.currentLocation, g)
+		writeStr := getFullAreaDescription(g)
+		WriteOutputToTerminal(g, writeStr)
+
 	}
+
+	// Examine an item
+	if command[0] == "examine" {
+		examineItem(g, command[1:])
+	}
+
+	// Go somewhere (which also does a 'look' in the new area)
+	if command[0] == "goto" {
+		realLoc := goToLocation(g, command[1:])
+
+		if realLoc {
+			writeStr := getFullAreaDescription(g)
+			WriteOutputToTerminal(g, writeStr)
+		}
+
+	}
+
+	// Check if any scripting was attached to this successful command
+	checkForScripting(g, command[0], command[1:])
 }
 
-func RepeatKeyPressed(key ebiten.Key) {
-	// pass
+// Returns a full description of the current area that a player is standing in.
+func getFullAreaDescription(g *Game) string {
+	locDesc := readLocationDesc(g.currentLocation, g)
+
+	// List of items that the player can interact with
+	locObjs := getLocationItems(g, g.currentLocation, true)
+
+	// List of places the player can currently go
+	conLocs := getLocationConnectedLocations(g, g.currentLocation, true)
+
+	// Combine the items
+	writeStr := fmt.Sprintf("%s\n\nYou can see these items: %s\n",
+		locDesc,
+		strings.Join(locObjs, ", "))
+
+	writeStr += fmt.Sprintf("You can go to these places: %s\n", strings.Join(conLocs, ", "))
+
+	return writeStr
 }

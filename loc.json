@@ -1,8 +1,219 @@
 [
-    {   "name": "dark_cave_entrance",
+    {   "name": "cave_entrance",
         "current_description": 0,
         "descriptions": [
             "You are standing in a cold, dark cave. You are looking directly into the darkness. You can feel the cold breeze on your neck indicating to you that the entrance is behind you."
+        ],
+        "connected_locations": {
+            "cave_interior": true,
+            "cave_exterior": true
+        },
+        "objects": [
+            {
+                "name": "blue_book",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            },
+            {
+                "name": "blue_rope",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
+    },
+    {   "name": "cave_interior",
+        "current_description": 0,
+        "descriptions": [
+            "You are actually in the back of the cave. It does not go back very deep, it is just incredibly dark."
+        ],
+        "connected_locations": {
+            "cave_entrance": true
+        },
+        "objects": [
+            {
+                "name": "blue_box",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
+    },
+    {   "name": "cave_exterior",
+        "current_description": 0,
+        "descriptions": [
+            "You are outside the entrance to the cave. Looking around you can see you are on some sort of rural farm property. However it seems disused as the wooden fences are almost entirely broken."
+        ],
+        "connected_locations": {
+            "fence_path": true
+        },
+        "objects": [
+            {
+                "name": "blue_shoe",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
+    },
+    {   "name": "fence_path",
+        "current_description": 0,
+        "descriptions": [
+            "A dirt path that goes parallel to the broken wooden fences. Desipte everything seemingly dilapidating around you the path appears frequently walked on."
+        ],
+        "connected_locations": {
+            "cave_exterior": true,
+            "shed": true,
+            "garden": true
+        },
+        "objects": [
+            {
+                "name": "fence",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
+    },
+    {   "name": "shed",
+        "current_description": 0,
+        "descriptions": [
+            "A very worn down shed. You can see right through the broken door. There are flies everywhere, and what appears to be a pile of viscious pink slop on the floor. There are no tools in the shed."
+        ],
+        "connected_locations": {
+            "fence_path": true
+        },
+        "objects": [
+            {
+                "name": "muddy_shoe",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
+    },
+    {   "name": "garden",
+        "current_description": 0,
+        "descriptions": [
+            "A long dead and dry garden, not even animal prints can be found here.",
+            "The dead and dry garden has what appears to be fresh boot prints in the dirt. Something seems missing."
+        ],
+        "connected_locations": {
+            "fence_path": true,
+            "farm_house_door": true
+        },
+        "objects": [
+            {
+                "name": "tomato_seeds",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
+    },
+    {   "name": "farm_house_door",
+        "current_description": 0,
+        "descriptions": [
+            "A long ago burned out farm house. The windows are broken, the floors and walls are charred black. The roof has collapsed in several places. There is one clear path through the charcoal that indicates it is frequently walked, exactly."
+        ],
+        "connected_locations": {
+            "garden": true,
+            "kitchen": true
+        },
+        "objects": [
+            {
+                "name": "scarf",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
+    },
+    {   "name": "kitchen",
+        "current_description": 0,
+        "descriptions": [
+            "The kitchen is burned to a crisp. There isn't much left here, apart from long rusted iron pans. There is one path through the kitchen where it appears that feet have cleared the ash due to frequent use. You hear a sound from the garden.",
+            "The kitchen is burned out. You notice a pantry door that you did not see before. The door is ajar."
+        ],
+        "connected_locations": {
+            "farm_house_door": true,
+            "hallway": true,
+            "pantry": false
+        },
+        "objects": [
+            {
+                "name": "rusty_pan",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
+    },
+    {   "name": "pantry",
+        "current_description": 0,
+        "descriptions": [
+            "All of the shelves but one have fallent to the floor. The one remaining shelf has a dusty jar of what is labeled as 'pickled'. You hear something from the kitchen."
+        ],
+        "connected_locations": {
+            "kitchen": true
+        },
+        "objects": [
+            {
+                "name": "jar",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
+    },
+    {   "name": "hallway",
+        "current_description": 0,
+        "descriptions": [
+            "A not-so-empty hallways. There are frames on the walls but with no photos inside of them. The charred carpet that runs the length of the hallway was clearly once a vibrant red.",
+            "The hallway seems more full than earlier. Looking closely you realize that the picture frames now all container portraits of you and what appears to be a family around you."
+        ],
+        "connected_locations": {
+            "kitchen": true,
+            "parlor": true
+        },
+        "objects": [
+            {
+                "name": "light_switch",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
+    },
+    {   "name": "parlor",
+        "current_description": 0,
+        "descriptions": [
+            "A destroyed parlor. The once nice endtables thrown over and burned. The light coming in from the broken windows gives evidence to the luxury that apparently once existed."
+        ],
+        "connected_locations": {
+            "hallway": true,
+            "front_door": false
+        },
+        "objects": [
+            {
+                "name": "photo",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
         ]
     },
     {   "name": "testing_void",
@@ -10,6 +221,9 @@
         "descriptions": [
             "I am an inky pink void for testing purposes. How did you get in here?",
             "No seriously, how?"
-        ]
+        ],
+        "connected_locations": {
+            "other_testing_void": true
+        }
     }
 ]
