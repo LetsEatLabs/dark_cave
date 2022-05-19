@@ -237,6 +237,13 @@
                 "is_visible": true,
                 "interacted": false,
                 "total": 1
+            },
+            {
+                "name": "family_photo",
+                "can_pickup": true,
+                "is_visible": false,
+                "interacted": false,
+                "total": 1
             }
         ]
     },
@@ -276,6 +283,13 @@
                 "is_visible": true,
                 "interacted": false,
                 "total": 1
+            },
+            {
+                "name": "watch",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
             }
         ]
     },
@@ -286,19 +300,49 @@
             "No seriously, how?"
         ],
         "connected_locations": {
-            "other_testing_void": true
+            "courtyard": true
         },
-        "objects": []
+        "objects": [
+            {
+                "name": "silver_spoons",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
     },
     {   "name": "quarters",
         "current_description": 0,
         "descriptions": [
-            "A barracks like housing full of beds and storage cabinets. Everything is torn apart and aged very poorly. It is clear that whenever this particular building was abandoned everything happened at once.\n\nThere is so much debris and torn cloth that is it difficult to have your feet touch the floor."
+            "A barracks like housing full of beds and storage cabinets. Everything is torn apart and aged very poorly. It is clear that whenever this particular building was abandoned everything happened at once.\n\nThere is so much debris and torn cloth that is it difficult to have your feet touch the floor. It smells heavily of mildew."
         ],
         "connected_locations": {
-            "other_testing_void": true
+            "courtyard": true
         },
-        "objects": []
+        "objects": [
+            {
+                "name": "jeans",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            },
+            {
+                "name": "journal",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            },
+            {
+                "name": "glasses",
+                "can_pickup": true,
+                "is_visible": false,
+                "interacted": false,
+                "total": 1
+            }
+        ]
     },
     {   "name": "testing_void",
         "current_description": 0,
