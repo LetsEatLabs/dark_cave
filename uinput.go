@@ -57,19 +57,24 @@ func WriteOutputToTerminal(g *Game, str string) {
 
 		// Check if there is a space coming up soon and break early to prevent
 		// Word wrap if we can
-		if textWidth-5 == i {
-			cont := false
-			for t := i + 4; t > i+4; t-- {
-				if string(str[t]) == " " {
-					newText += "\n"
-					a = 0
-					cont = true
-					break
-				}
-			}
 
-			if cont == true {
-				continue
+		spaceLeft := textWidth - a - 1 // subtract one extra to ensure we do not go over
+
+		if spaceLeft < wrapDistance {
+			if spaceLeft > 0 {
+				if letter == " " {
+					for t := 0; t < spaceLeft; t++ {
+						if i+t < len(str) {
+							if string(str[t+i]) == " " {
+								newText += "\n"
+								a = 0
+								break
+							}
+						}
+
+					}
+				}
+
 			}
 		}
 
@@ -112,6 +117,21 @@ func CheckIfListHasString(str string, arr []string) bool {
 // Call that command's methods
 func HandleCommand(g *Game, command []string) {
 
+	if command[0] == "debug" {
+		if command[1] == "on" {
+			g.isDebug = true
+			WriteOutputToTerminal(g, "Debug mode is enabled.")
+			return
+		}
+
+		if command[1] == "off" {
+			g.isDebug = false
+			WriteOutputToTerminal(g, "Debug mode is disabled.")
+			return
+		}
+
+	}
+
 	// Do we know this command?
 	if !CheckIfListHasString(command[0], knownCommands) {
 		writeStr := fmt.Sprintf("I do not know what %s means. I know these things: \n- %s",
@@ -136,6 +156,7 @@ func HandleCommand(g *Game, command []string) {
 		}
 
 		WriteOutputToTerminal(g, writeStr)
+		return
 
 	}
 
@@ -143,12 +164,15 @@ func HandleCommand(g *Game, command []string) {
 	if command[0] == "look" {
 		writeStr := getFullAreaDescription(g)
 		WriteOutputToTerminal(g, writeStr)
+		checkForScripting(g, command[0], command[1:])
 
 	}
 
 	// Examine an item
 	if command[0] == "examine" {
 		examineItem(g, command[1:])
+		checkForScripting(g, command[0], command[1:])
+
 	}
 
 	// Go somewhere (which also does a 'look' in the new area)
@@ -160,10 +184,13 @@ func HandleCommand(g *Game, command []string) {
 			WriteOutputToTerminal(g, writeStr)
 		}
 
-	}
+		// If we are in debug mode, check for scripting even if we cannot
+		// Access this area now, because screw you its debug mode.
+		if g.isDebug {
+			checkForScripting(g, command[0], command[1:])
+		}
 
-	// Check if any scripting was attached to this successful command
-	checkForScripting(g, command[0], command[1:])
+	}
 }
 
 // Returns a full description of the current area that a player is standing in.
@@ -177,11 +204,11 @@ func getFullAreaDescription(g *Game) string {
 	conLocs := getLocationConnectedLocations(g, g.currentLocation, true)
 
 	// Combine the items
-	writeStr := fmt.Sprintf("%s\n\nYou can see these items: %s\n",
+	writeStr := fmt.Sprintf("%s\n\nYou can 'examine' these items: %s\n",
 		locDesc,
 		strings.Join(locObjs, ", "))
 
-	writeStr += fmt.Sprintf("You can go to these places: %s\n", strings.Join(conLocs, ", "))
+	writeStr += fmt.Sprintf("You can 'goto' these places: %s\n", strings.Join(conLocs, ", "))
 
 	return writeStr
 }

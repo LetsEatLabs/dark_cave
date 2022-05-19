@@ -40,13 +40,20 @@
                 "is_visible": true,
                 "interacted": false,
                 "total": 1
+            },
+            {
+                "name": "dirt_pile",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
             }
         ]
     },
     {   "name": "cave_exterior",
         "current_description": 0,
         "descriptions": [
-            "You are outside the entrance to the cave. Looking around you can see you are on some sort of rural farm property. However it seems disused as the wooden fences are almost entirely broken."
+            "You are outside the entrance to the cave. Looking around you can see you are on some sort of rural farm property. However it seems unused as the wooden fences are almost entirely broken."
         ],
         "connected_locations": {
             "fence_path": true
@@ -64,7 +71,7 @@
     {   "name": "fence_path",
         "current_description": 0,
         "descriptions": [
-            "A dirt path that goes parallel to the broken wooden fences. Desipte everything seemingly dilapidating around you the path appears frequently walked on."
+            "A dirt path that goes parallel to the broken wooden fences. Desipte everything seemingly falling apart around you the path appears frequently walked on."
         ],
         "connected_locations": {
             "cave_exterior": true,
@@ -84,7 +91,7 @@
     {   "name": "shed",
         "current_description": 0,
         "descriptions": [
-            "A very worn down shed. You can see right through the broken door. There are flies everywhere, and what appears to be a pile of viscious pink slop on the floor. There are no tools in the shed."
+            "A very worn down shed. You can see right through the broken door. There are flies everywhere, and what appears to be a pile of viscous pink slop on the floor. There are no tools in the shed."
         ],
         "connected_locations": {
             "fence_path": true
@@ -92,6 +99,20 @@
         "objects": [
             {
                 "name": "muddy_shoe",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            },
+            {
+                "name": "slop",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            },
+            {
+                "name": "wallet",
                 "can_pickup": true,
                 "is_visible": true,
                 "interacted": false,
@@ -112,6 +133,13 @@
         "objects": [
             {
                 "name": "tomato_seeds",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            },
+            {
+                "name": "pail",
                 "can_pickup": true,
                 "is_visible": true,
                 "interacted": false,
@@ -141,7 +169,7 @@
     {   "name": "kitchen",
         "current_description": 0,
         "descriptions": [
-            "The kitchen is burned to a crisp. There isn't much left here, apart from long rusted iron pans. There is one path through the kitchen where it appears that feet have cleared the ash due to frequent use. You hear a sound from the garden.",
+            "The kitchen is burned to a crisp. There isn't much left here, apart from long rusted iron pans. There is one path through the kitchen where it appears that feet have cleared the ash due to frequent use.\n\nYou hear a sound from the garden.",
             "The kitchen is burned out. You notice a pantry door that you did not see before. The door is ajar."
         ],
         "connected_locations": {
@@ -156,13 +184,20 @@
                 "is_visible": true,
                 "interacted": false,
                 "total": 1
+            },
+            {
+                "name": "recipe",
+                "can_pickup": true,
+                "is_visible": false,
+                "interacted": false,
+                "total": 1
             }
         ]
     },
     {   "name": "pantry",
         "current_description": 0,
         "descriptions": [
-            "All of the shelves but one have fallent to the floor. The one remaining shelf has a dusty jar of what is labeled as 'pickled'. You hear something from the kitchen."
+            "All of the shelves but one have fallent to the floor. The one remaining shelf has a dusty jar of what is labeled as 'pickled'. You also see a ring of keys.\n\nYou hear something from the kitchen."
         ],
         "connected_locations": {
             "kitchen": true
@@ -174,14 +209,22 @@
                 "is_visible": true,
                 "interacted": false,
                 "total": 1
+            },
+            {
+                "name": "keys",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
             }
+
         ]
     },
     {   "name": "hallway",
         "current_description": 0,
         "descriptions": [
             "A not-so-empty hallways. There are frames on the walls but with no photos inside of them. The charred carpet that runs the length of the hallway was clearly once a vibrant red.",
-            "The hallway seems more full than earlier. Looking closely you realize that the picture frames now all container portraits of you and what appears to be a family around you."
+            "The hallway seems more full than earlier. Looking closely you realize that the picture frames now all contain portraits of you and what appears to be a family around you."
         ],
         "connected_locations": {
             "kitchen": true,
@@ -194,23 +237,108 @@
                 "is_visible": true,
                 "interacted": false,
                 "total": 1
+            },
+            {
+                "name": "family_photo",
+                "can_pickup": true,
+                "is_visible": false,
+                "interacted": false,
+                "total": 1
             }
         ]
     },
     {   "name": "parlor",
         "current_description": 0,
         "descriptions": [
-            "A destroyed parlor. The once nice endtables thrown over and burned. The light coming in from the broken windows gives evidence to the luxury that apparently once existed."
+            "A destroyed parlor. The once nice endtables thrown over and burned. The light coming in from the broken windows gives evidence to the luxury that apparently once existed. There is a wooden door at the other end of the room - it is locked.",
+            "A destroyed parlor. The once nice endtables thrown over and burned. The light coming in from the broken windows gives evidence to the luxury that apparently once existed. There is a wooden door at the other end of the room."
         ],
         "connected_locations": {
             "hallway": true,
-            "front_door": false
+            "courtyard": false
         },
         "objects": [
             {
                 "name": "photo",
                 "can_pickup": true,
                 "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
+    },
+    {   "name": "courtyard",
+        "current_description": 0,
+        "descriptions": [
+            "A faded courtyard. It was clearly never terribly fancy, but it does have a stone floor. The views of the surrounding forrested hills is quite pleasant. You can always feel a breeze in just the right spot while you are standing here."
+        ],
+        "connected_locations": {
+            "dining_room": true,
+            "quarters": true
+        },
+        "objects": [
+            {
+                "name": "fabric",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            },
+            {
+                "name": "watch",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
+    },
+    {   "name": "dining_room",
+        "current_description": 0,
+        "descriptions": [
+            "I am an inky pink void for testing purposes. How did you get in here?",
+            "No seriously, how?"
+        ],
+        "connected_locations": {
+            "courtyard": true
+        },
+        "objects": [
+            {
+                "name": "silver_spoons",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            }
+        ]
+    },
+    {   "name": "quarters",
+        "current_description": 0,
+        "descriptions": [
+            "A barracks like housing full of beds and storage cabinets. Everything is torn apart and aged very poorly. It is clear that whenever this particular building was abandoned everything happened at once.\n\nThere is so much debris and torn cloth that is it difficult to have your feet touch the floor. It smells heavily of mildew."
+        ],
+        "connected_locations": {
+            "courtyard": true
+        },
+        "objects": [
+            {
+                "name": "jeans",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            },
+            {
+                "name": "journal",
+                "can_pickup": true,
+                "is_visible": true,
+                "interacted": false,
+                "total": 1
+            },
+            {
+                "name": "glasses",
+                "can_pickup": true,
+                "is_visible": false,
                 "interacted": false,
                 "total": 1
             }
@@ -224,6 +352,7 @@
         ],
         "connected_locations": {
             "other_testing_void": true
-        }
+        },
+        "objects": []
     }
 ]
